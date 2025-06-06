@@ -17,7 +17,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* Sidebar */
     .sidebar {
       width: 250px;
       height: 100vh;
@@ -50,7 +49,6 @@
       color: #fff;
     }
 
-    /* Overlay (untuk HP) */
     .overlay {
       position: fixed;
       top: 0;
@@ -100,6 +98,16 @@
     }
 
     .video-list {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* Tambahan agar bisa scroll */
+  max-height: 400px;
+  overflow-y: auto;
+
       flex: 1;
       min-width: 250px;
       display: flex;
@@ -160,23 +168,19 @@
   <div class="wrapper" id="wrapper">
     <div class="container">
       <div class="video-main">
-        <!-- 
-        <iframe id="mainVideo" src="https://www.youtube.com/embed/tgbNymZ7vqY" allowfullscreen></iframe>
-        https://drive.google.com/file/d/1_jI3uRfskpS5LmYFdH3nmRnlQp_VAHj9/view?usp=sharing
-        -->
         <iframe id="mainVideo" src="https://drive.google.com/file/d/1_jI3uRfskpS5LmYFdH3nmRnlQp_VAHj9/preview" width="100%" height="400" allow="autoplay"></iframe>
+        <h3 id="videoTitle" style="margin-top: 10px;">Bagian Tubuh Part 0</h3>
       </div>
       <div class="video-list">
-        <!-- Tambahkan sebanyak mungkin video -->
-        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Ivcmb1x0s_5VmuqRGHrR2ZuK45F8ttBU/preview')">
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Ivcmb1x0s_5VmuqRGHrR2ZuK45F8ttBU/preview', 'Bagian Tubuh Part 1')">
             <img src="thumbnail.jpg" alt="Bagian Tubuh Part 1">
             <div class="info">Bagian Tubuh Part 1</div>
         </div>
-        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1_gisHUjvJaPv-S5-VP7uROiFSQYoj_g5/preview')">
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1_gisHUjvJaPv-S5-VP7uROiFSQYoj_g5/preview', 'Bagian Tubuh Part 2')">
             <img src="thumbnail.jpg" alt="Bagian Tubuh Part 2">
             <div class="info">Bagian Tubuh Part 2</div>
         </div>
-        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1BXfsz7-e0u6eubtrgWhRIP_diHfTiU7k/preview')">
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1BXfsz7-e0u6eubtrgWhRIP_diHfTiU7k/preview', 'Bagian Tubuh Part 3')">
             <img src="thumbnail.jpg" alt="Bagian Tubuh Part 3">
             <div class="info">Bagian Tubuh Part 3</div>
         </div>
@@ -185,19 +189,24 @@
   </div>
 
   <script>
-    function toggleSidebar() {
+    function toggleSidebar(forceClose = null) {
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
 
-      sidebar.classList.toggle("open");
-      overlay.classList.toggle("active");
+      if (forceClose === false) {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      } else {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+      }
     }
 
-    function playVideo(url) {
+    function playVideo(url, title) {
       document.getElementById("mainVideo").src = url;
-      toggleSidebar(false); // Optional: tutup sidebar saat klik video
+      document.getElementById("videoTitle").textContent = title;
+      toggleSidebar(false);
     }
-
   </script>
 
 </body>
