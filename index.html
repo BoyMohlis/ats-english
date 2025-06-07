@@ -88,7 +88,6 @@
     .video-main {
       flex: 3;
       min-width: 300px;
-      height: 100%;
     }
 
     .video-main iframe {
@@ -98,22 +97,14 @@
       border-radius: 10px;
     }
 
-  .video-list {
-  /*flex: 1;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  /* Tambahan agar bisa scroll */
-  max-height: 400px;
-  overflow-y: auto;
-
+    .video-list {
       flex: 1;
       min-width: 250px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-height: 400px;
+      overflow-y: auto;
     }
 
     .video-item {
@@ -139,10 +130,33 @@
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
+        align-items: center;
       }
 
       .video-main iframe {
-        height: 250px;
+        height: 200px;
+      }
+
+      .video-list {
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .video-item {
+        flex-direction: row;
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .video-item img {
+        width: 100px;
+        height: 60px;
+      }
+
+      .video-item .info {
+        font-size: 14px;
+        padding: 0.5em;
       }
     }
   </style>
@@ -187,15 +201,15 @@
         </div>
         <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1_JRL27eSlneWDI6ZCAhsgo_GBwpfISs4/preview', 'Benda Part 1')">
             <img src="thumbnail.jpg" alt="Benda Part 1">
-        <div class="info">Benda part 1</div>
+            <div class="info">Benda part 1</div>
         </div>
         <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/14oo7OONAgVEgMDSNS5iieihJiiJKUkeV/preview', 'Benda Part 2')">
             <img src="thumbnail.jpg" alt="Benda Part 2">
-        <div class="info">Benda part 2</div>
+            <div class="info">Benda part 2</div>
         </div>
         <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1v9AhjEtJr5FgYWdjJ7WHgWNtAgjumx1e/preview', 'Benda Part 3')">
             <img src="thumbnail.jpg" alt="Benda Part 3">
-        <div class="info">Benda part 3</div>
+            <div class="info">Benda part 3</div>
         </div>
       </div>
     </div>
