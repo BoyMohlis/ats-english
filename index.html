@@ -86,8 +86,11 @@
     }
 
     .video-main {
-      flex: 3;
-      min-width: 400px;
+      flex: 1;
+      min-width: 300px;
+      position: sticky;
+      top: 60px;
+      z-index: 10;
     }
     
     .video-main iframe {
@@ -98,13 +101,14 @@
     }
 
     .video-list {
-      flex: 1;
-      min-width: 250px;
+      flex: none;
+      widht: 320px;
+      max-height: 90vh;
+      overflow-y: auto;
+      /*min-width: 250px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      max-height: 400px;
-      overflow-y: auto;
+      gap: 10px;*/
     }
 
     .video-item {
