@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latihan 03 ATS-English</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      position: fixed;
+      top: 0;
+      left: -280px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h2 {
+      color: #fff;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1100;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 60px 1rem 1rem 1rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .video-main {
+      flex: 1;
+      min-width: 400px;
+      position: sticky;
+      top: 0px;
+      z-index: 10;
+      background-color: white;
+    }
+    
+    .video-main iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .video-list {
+      flex: none;
+      width: 320px;
+      max-height: 90vh;
+      overflow-y: auto;
+      /*min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 100%;
+      */
+    }
+
+    .video-item {
+      display: flex;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-item img {
+      width: 120px;
+      height: 70px;
+      object-fit: cover;
+    }
+
+    .video-item .info {
+      padding: 0.5em;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .video-main iframe {
+        height: 200px;
+      }
+
+      .video-list {
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .video-item {
+        flex-direction: row;
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .video-item img {
+        width: 100px;
+        height: 60px;
+      }
+
+      .video-item .info {
+        font-size: 18px;
+        padding: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+  <div class="sidebar" id="sidebar">
+    <br><h2>Menu</h2>
+    <a href="https://boymohlis.github.io/engoffline/index.html">EngBreaking</a>
+    <a href="index.html">Latihan 1 video 45</a>
+    <a href="latihan02.html">Latihan 2 video 70</a>
+    <a href="latihan03.html">Latihan 3 video 50</a>
+    <a href="#">Latihan 4 video 54</a>
+    <a href="#">Latihan 5 video 51</a>
+    <a href="#">Latihan 6 video 52</a>
+    <a href="#">Latihan 7 video 44</a>
+    <a href="#">Tentang</a>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <div class="wrapper" id="wrapper">
+    <div class="container">
+      <div class="video-main">
+        <iframe id="mainVideo" src="https://drive.google.com/file/d/1_jI3uRfskpS5LmYFdH3nmRnlQp_VAHj9/preview" width="100%" height="400px" allowfullscreen ></iframe>
+        <h3 id="videoTitle" style="margin-top: 10px;">Pembukaan Latihan 03</h3>
+      </div>
+      <!-- <div style="height: 400px; overflow-y: none;"> -->
+      <div class="video-list" >
+        <div class="video-item" onclick="playVideo('', '1 Belajar gender dan sifat')">
+            <img src="thumbnail03.jpg" alt="1 Belajar gender dan sifat">
+            <div class="info">1 Belajar gender dan sifat</div>
+        </div>
+        <div class="video-item" onclick="playVideo('', '2 Belajar umur seseorang')">
+            <img src="thumbnail03.jpg" alt="2 Belajar umur seseorang">
+            <div class="info">2 Belajar umur seseorang</div>
+        </div>
+        <div class="video-item" onclick="playVideo('', '3 Belajar jenis hewan pt I')">
+            <img src="thumbnail03.jpg" alt="3 Belajar jenis hewan pt I">
+            <div class="info">3 Belajar jenis hewan pt I</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1SPhXntfLsbB75ypVhRQU4PPS8PDKNz34/preview', '4 Belajar jenis hewan pt II')">
+            <img src="thumbnail02.jpg" alt="4 Belajar jenis hewan pt II">
+            <div class="info">4 Belajar jenis hewan pt II</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1xFh_BSThXDLjBaABPqtlEf8KOgAIaUBm/preview', '5 Belajar gender hewan')">
+            <img src="thumbnail02.jpg" alt="5 Belajar gender hewan">
+            <div class="info">5 Belajar gender hewan</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1htxCNb_8jL9b4Q6ctjvymfh7z3Et2Jic/preview', '6 Belajar warna hewan')">
+            <img src="thumbnail02.jpg" alt="6 Belajar warna hewan">
+            <div class="info">6 Belajar warna hewan</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1QUJJFenU6wc2ednR5hxFazBCNJ4j3SqA/preview', '7 Belajar umur hewan')">
+            <img src="thumbnail02.jpg" alt="7 Belajar umur hewan">
+            <div class="info">7 Belajar umur hewan</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1QpaZNHlS2xvluF-gpULHHL9-mS9sOomX/preview', '8 Belajar selisih umur hewan')">
+            <img src="thumbnail02.jpg" alt="8 Belajar selisih umur hewan">
+            <div class="info">8 Belajar selisih umur hewan</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1XpOeTjPGXxixyh9jjDZQKDjDObyWINkR/preview', '9 Belajar nama barang')">
+            <img src="thumbnail02.jpg" alt="9 Belajar nama barang">
+            <div class="info">9 Belajar nama barang</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1QDtTL-9bLtNPaDvBV8_kpbdFtvDdSq6d/preview', '10 Belajar harga barang')">
+            <img src="thumbnail02.jpg" alt="10 Belajar harga barang">
+        <div class="info">10 Belajar harga barang</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1jWJopTGQhRiL9_Xyei5GRApNUMY8dBcv/preview', '11 Belajar selisih harga pt I')">
+            <img src="thumbnail02.jpg" alt="11 Belajar selisih harga pt I">
+        <div class="info">11 Belajar selisih harga pt I</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1kyZ9dxp3GQHD7tK_9FrWOJWVbqKTH4SK/preview', '12 Belajar selisih harga pt II')">
+            <img src="thumbnail02.jpg" alt="12 Belajar selisih harga pt II">
+        <div class="info">12 Belajar selisih harga pt II</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/127CAv-qawKmFx3xr0kBDjFISTzQBTnVT/preview', '13 Belajar panjang barang')">
+            <img src="thumbnail02.jpg" alt="13 Belajar panjang barang">
+        <div class="info">13 Belajar panjang barang</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/13Omhz1RR8v1qpZof-05LGFhfQiFgTWcV/preview', '14 Belajar selisih panjang barang')">
+            <img src="thumbnail02.jpg" alt="14 Belajar selisih panjang barang">
+        <div class="info">14 Belajar selisih panjang barang</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1YAiEb3ImCPC_hSFmH73Iw7DcJB4y2p0m/preview', '15 Belajar aktifitas pt I')">
+            <img src="thumbnail02.jpg" alt="15 Belajar aktifitas pt I">
+        <div class="info">15 Belajar aktifitas pt I</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/15WHgNkE3FmcyIMwck78pIKUNLzQmjc_G/preview', '16 Belajar aktifitas pt II')">
+            <img src="thumbnail02.jpg" alt="16 Belajar aktifitas pt II">
+        <div class="info">16 Belajar aktifitas pt II</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1RTPMwMEBvoppbuu2VzuEF1yukixqQErX/preview', '17 Belajar kebiasaan pt I')">
+            <img src="thumbnail02.jpg" alt="17 Belajar kebiasaan pt I">
+        <div class="info">17 Belajar kebiasaan pt I</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1mYMDKN2nn3ZvKF5OVXdVCFgSFeqbv1cD/preview', '18 Belajar kebiasaan pt II')">
+            <img src="thumbnail02.jpg" alt="18 Belajar kebiasaan pt II">
+        <div class="info">18 Belajar kebiasaan pt II</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1hj8txpkTZ0JxH_A2S8BlGHGL3fD5g7_m/preview', '19 Belajar profesi seseorang')">
+            <img src="thumbnail02.jpg" alt="19 Belajar profesi seseorang">
+        <div class="info">19 Belajar profesi seseorang</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1vrOAf10gKjN-q-S8QdwN_2Y_GG72YGOG/preview', '20 Belajar dua orang guru')">
+            <img src="thumbnail02.jpg" alt="20 Belajar dua orang guru">
+        <div class="info">20 Belajar dua orang guru</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1WVEOmpB5vmxIGZSDV5LZZRaScYfX5ogd/preview', '21 Belajar waktu kerja')">
+            <img src="thumbnail02.jpg" alt="21 Belajar waktu kerja">
+        <div class="info">21 Belajar waktu kerja</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1HnP-BWMWD1TJxdZ-Axecgqca_l_B-0Oy/preview', '22 Belajar guru ketiga')">
+            <img src="thumbnail02.jpg" alt="22 Belajar guru ketiga">
+        <div class="info">22 Belajar guru ketiga</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1jo6Ne3Yn2f0Qvpm-o9Ilp-qtmKQbQAA4/preview', '23 Belajar anatomi hewan 1')">
+            <img src="thumbnail02.jpg" alt="23 Belajar anatomi hewan 1">
+        <div class="info">23 Belajar anatomi hewan 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1lyWvOGsuoOt3eDrbddF2YY3XpbtpgosQ/preview', '24 Belajar anatomi hewan 2')">
+            <img src="thumbnail02.jpg" alt="24 Belajar anatomi hewan 2">
+        <div class="info">24 Belajar anatomi hewan 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Qd-fQ6vNpbzInD_Tdf-dOFV6V77rl7VL/preview', '25 Belajar anatomi hewan 3')">
+            <img src="thumbnail02.jpg" alt="25 Belajar anatomi hewan 3">
+        <div class="info">25 Belajar anatomi hewan 3</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1p6LbjTkyI_PXorsBcH7ZyfHWiZ2fDjsB/preview', '26 Belajar anatomi hewan 4')">
+            <img src="thumbnail02.jpg" alt="26 Belajar anatomi hewan 4">
+        <div class="info">26 Belajar anatomi hewan 4</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1m8L7UHJVA1yHE2-VN8v4dxeR4AWd6sP_/preview', '27 Belajar aktifitas pagi 1')">
+            <img src="thumbnail02.jpg" alt="27 Belajar aktifitas pagi 1">
+        <div class="info">27 Belajar aktifitas pagi 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1sw54fO8YhkzcwIP6K--FuSR1lVPjLagK/preview', '28 Belajar aktifitas pagi 2')">
+            <img src="thumbnail02.jpg" alt="28 Belajar aktifitas pagi 2">
+        <div class="info">28 Belajar aktifitas pagi 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1wy9qdNk25TSiyzhIUlRHN1ihbDrcOsmR/preview', '29 Belajar aktifitas pagi 3')">
+            <img src="thumbnail02.jpg" alt="29 Belajar aktifitas pagi 3">
+        <div class="info">29 Belajar aktifitas pagi 3</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1DBr3OMJGPGOKrX4l4P0BHY0OS3hz-SVP/preview', '30 Belajar aktifitas malam 1')">
+            <img src="thumbnail02.jpg" alt="30 Belajar aktifitas malam 1">
+        <div class="info">30 Belajar aktifitas malam 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1afgB_e8nPUGZY5CxdoPIfGCYKh49R1sI/preview', '31 Belajar aktifitas malam 2')">
+            <img src="thumbnail02.jpg" alt="31 Belajar aktifitas malam 2">
+        <div class="info">31 Belajar aktifitas malam 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/15V2TeOB_KMygN4SPTHet-CI5DlzPq3z8/preview', '32 Belajar Keharusan 1')">
+            <img src="thumbnail02.jpg" alt="32 Belajar Keharusan 1">
+        <div class="info">32 Belajar Keharusan 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1isruC1SRVx6PdzJMQBkof5pwz5-dghvf/preview', '33 Belajar Keharusan 2')">
+            <img src="thumbnail02.jpg" alt="33 Belajar Keharusan 2">
+        <div class="info">33 Belajar Keharusan 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1TdLOcf8jiHBYANNH1z2IweAEuJEN2JDg/preview', '34 Belajar Keharusan 3')">
+            <img src="thumbnail02.jpg" alt="34 Belajar Keharusan 3">
+        <div class="info">34 Belajar Keharusan 3</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1vV-eAo7gj9zl6UtpdkiktKUFA1IXdef7/preview', '35 Sedang menonton 1')">
+            <img src="thumbnail02.jpg" alt="35 Sedang menonton 1">
+        <div class="info">35 Sedang menonton 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1a7Utu3tuRynib-cCx_EWlcqFjSStqM4T/preview', '36 Sedang menonton 2')">
+            <img src="thumbnail02.jpg" alt="36 Sedang menonton 2">
+        <div class="info">36 Sedang menonton 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1_6OGQuvQfgnQNCF-qcPCHartTSMfqL9-/preview', '37 Sedang berpikir')">
+            <img src="thumbnail02.jpg" alt="37 Sedang berpikir">
+        <div class="info">37 Sedang berpikir</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/159E7KN2D_oJ2ThECF3hSl1kNiXK-D5IE/preview', '38 Sedang bekerja 1')">
+            <img src="thumbnail02.jpg" alt="38 Sedang bekerja 1">
+        <div class="info">38 Sedang bekerja 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1vDbwhyeaSWDz4YxNyQSRiGpQcFULulS7/preview', '39 Sedang bekerja 2')">
+            <img src="thumbnail02.jpg" alt="39 Sedang bekerja 2">
+        <div class="info">39 Sedang bekerja 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1i_ZVlFLP7W88u2Ig7sE0ZSejNLiPrsVj/preview', '40 Sedang berlibur 1')">
+            <img src="thumbnail02.jpg" alt="40 Sedang berlibur 1">
+        <div class="info">40 Sedang berlibur 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1SHSX7BimNMmEdpAQzixSmqgaKVau35Lo/preview', '41 Sedang berlibur 2')">
+            <img src="thumbnail02.jpg" alt="41 Sedang berlibur 2">
+        <div class="info">41 Sedang berlibur 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1eGX1VsE2z9IxZvraQWwLXPqJvRX_uRti/preview', '42 Niat yang dadakan 1')">
+            <img src="thumbnail02.jpg" alt="42 Niat yang dadakan 1">
+        <div class="info">42 Niat yang dadakan 1</div>
+        </div>
+                <div class="video-item" onclick="playVideo('https://drive.google.com/file/d/13uSAqQ70tTlYi7uMw8OFeAnB9XCrwVbA/preview', '43 Niat yang dadakan 2')">
+            <img src="thumbnail02.jpg" alt="43 Niat yang dadakan 2">
+        <div class="info">43 Niat yang dadakan 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('', '44 Niat dengan syarat 1')">
+            <img src="thumbnail03.jpg" alt="44 Niat dengan syarat 1">
+        <div class="info">44 Niat dengan syarat 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('', '45 Niat dengan syarat 2')">
+            <img src="thumbnail03.jpg" alt="45 Niat dengan syarat 2">
+        <div class="info">45 Niat dengan syarat 2</div>
+        </div>
+        <div class="video-item" onclick="playVideo('', '46 Niat di masa depan 1')">
+            <img src="thumbnail03.jpg" alt="46 Niat di masa depan 1">
+        <div class="info">46 Niat di masa depan 1</div>
+        </div>
+        <div class="video-item" onclick="playVideo('', '47 Niat di masa depan 2')">
+            <img src="thumbnail03.jpg" alt="47 Niat di masa depan 2">
+        <div class="info">47 Niat di masa depan 2</div>
+        </div>
+          <div class="video-item" onclick="playVideo('', '48 Rencana dengan syarat')">
+            <img src="thumbnail03.jpg" alt="48 Rencana dengan syarat">
+        <div class="info">48 Rencana dengan syarat</div>
+        </div>
+          <div class="video-item" onclick="playVideo('', '49 Perencanaan aktifitas 1')">
+            <img src="thumbnail03.jpg" alt="49 Perencanaan aktifitas 1">
+        <div class="info">49 Perencanaan aktifitas 1</div>
+        </div>
+          <div class="video-item" onclick="playVideo('', '50 Perencanaan aktifitas 2')">
+            <img src="thumbnail02.jpg" alt="50 Perencanaan aktifitas 2">
+        <div class="info">50 Perencanaan aktifitas 2</div>
+        </div>
+
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+
+  <script>
+    function toggleSidebar(forceClose = null) {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      if (forceClose === false) {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      } else {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+      }
+    }
+
+    function playVideo(url, title) {
+      document.getElementById("mainVideo").src = url;
+      document.getElementById("videoTitle").textContent = title;
+      toggleSidebar(false);
+    }
+  </script>
+
+</body>
+</html>
