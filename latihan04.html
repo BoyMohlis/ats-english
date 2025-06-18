@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latihan 03 ATS-English</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      position: fixed;
+      top: 0;
+      left: -280px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h2 {
+      color: #fff;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1100;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 60px 1rem 1rem 1rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .video-main {
+      flex: 1;
+      min-width: 400px;
+      position: sticky;
+      top: 0px;
+      z-index: 10;
+      background-color: white;
+    }
+    
+    .video-main iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .video-list {
+      flex: none;
+      width: 320px;
+      max-height: 90vh;
+      overflow-y: auto;
+      /*min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 100%;
+      */
+    }
+
+    .video-item {
+      display: flex;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-item img {
+      width: 120px;
+      height: 70px;
+      object-fit: cover;
+    }
+
+    .video-item .info {
+      padding: 0.5em;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .video-main iframe {
+        height: 200px;
+      }
+
+      .video-list {
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .video-item {
+        flex-direction: row;
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .video-item img {
+        width: 100px;
+        height: 60px;
+      }
+
+      .video-item .info {
+        font-size: 18px;
+        padding: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+  <div class="sidebar" id="sidebar">
+    <br><h2>Menu</h2>
+    <a href="https://boymohlis.github.io/engoffline/index.html">EngBreaking</a>
+    <a href="index.html">Latihan 1 video 45</a>
+    <a href="latihan02.html">Latihan 2 video 70</a>
+    <a href="latihan03.html">Latihan 3 video 50</a>
+    <a href="latihan04.html">Latihan 4 video 54</a>
+    <a href="#">Latihan 5 video 51</a>
+    <a href="#">Latihan 6 video 52</a>
+    <a href="#">Latihan 7 video 44</a>
+    <a href="#">Tentang</a>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <div class="wrapper" id="wrapper">
+    <div class="container">
+      <div class="video-main">
+        <iframe id="mainVideo" src="https://drive.google.com/file/d/1_jI3uRfskpS5LmYFdH3nmRnlQp_VAHj9/preview" width="100%" height="400px" allowfullscreen ></iframe>
+        <h3 id="videoTitle" style="margin-top: 10px;">Pembukaan Latihan 04</h3>
+      </div>
+      <div class="video-list" >
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1nHZ6JWsTeOh6xDDH50VRAL31viczOhXX/preview', '1A Rita bertemu Becca di Net Cafe')">
+  <img src="thumbnail04.jpg" alt="1A Rita bertemu Becca di Net Cafe">
+  <div class="info">1A Rita bertemu Becca di Net Cafe</div>
+</div>
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1RuziTzFvb-fbm8nFke9qqSdfFaetb-ah/preview', '1B Rita dan Amber mengobrol bersama')">
+  <img src="thumbnail04.jpg" alt="1B Rita dan Amber mengobrol bersama">
+  <div class="info">1B Rita dan Amber mengobrol bersama</div>
+</div>
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/15k7VC9JtOL8rb4d6uJT80ZMqMC84t1qD/preview', '1C Rita bangga dengan Amber')">
+  <img src="thumbnail04.jpg" alt="1C Rita bangga dengan Amber">
+  <div class="info">1C Rita bangga dengan Amber</div>
+</div>
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1VvzsDGtGdcgWR0uHSbbYoMq1O-Zioh6Q/preview', '1D Aaron memasak bersama Jeff')">
+  <img src="thumbnail04.jpg" alt="1D Aaron memasak bersama Jeff">
+  <div class="info">1D Aaron memasak bersama Jeff</div>
+</div>
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1jiHD59Jfm_oL4Uob1qtipTJHL1_hSJOh/preview', '2A Aaron menerima telepon di Net Cafe')">
+  <img src="thumbnail04.jpg" alt="2A Aaron menerima telepon di Net Cafe">
+  <div class="info">2A Aaron menerima telepon di Net Cafe</div>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar(forceClose = null) {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      if (forceClose === false) {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      } else {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+      }
+    }
+
+    function playVideo(url, title) {
+      document.getElementById("mainVideo").src = url;
+      document.getElementById("videoTitle").textContent = title;
+      toggleSidebar(false);
+    }
+  </script>
+
+</body>
+</html>
