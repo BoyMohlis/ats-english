@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latihan 07 ATS-English</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      position: fixed;
+      top: 0;
+      left: -280px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h2 {
+      color: #fff;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1100;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 60px 1rem 1rem 1rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .video-main {
+      flex: 1;
+      min-width: 400px;
+      position: sticky;
+      top: 0px;
+      z-index: 10;
+      background-color: white;
+    }
+    
+    .video-main iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .video-list {
+      flex: none;
+      width: 320px;
+      max-height: 90vh;
+      overflow-y: auto;
+      /*min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 100%;
+      */
+    }
+
+    .video-item {
+      display: flex;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-item img {
+      width: 120px;
+      height: 70px;
+      object-fit: cover;
+    }
+
+    .video-item .info {
+      padding: 0.5em;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .video-main iframe {
+        height: 200px;
+      }
+
+      .video-list {
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .video-item {
+        flex-direction: row;
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .video-item img {
+        width: 100px;
+        height: 60px;
+      }
+
+      .video-item .info {
+        font-size: 18px;
+        padding: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+  <div class="sidebar" id="sidebar">
+    <br><h2>Menu ATS-ENGLISH</h2>
+    <a href="https://boymohlis.github.io/engoffline/index.html">EngBreaking</a>
+    <a href="index.html">Latihan 1 video 45</a>
+    <a href="latihan02.html">Latihan 2 video 70</a>
+    <a href="latihan03.html">Latihan 3 video 50</a>
+    <a href="latihan04.html">Latihan 4 video 54</a>
+    <a href="latihan05.html">Latihan 5 video 51</a>
+    <a href="latihan06.html">Latihan 6 video 52</a>
+    <a href="latihan07.html">Latihan 7 video 44</a>
+    <a href="about.html">Tentang</a>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <div class="wrapper" id="wrapper">
+    <div class="container">
+      <div class="video-main">
+        <iframe id="mainVideo" src="https://drive.google.com/file/d/1_jI3uRfskpS5LmYFdH3nmRnlQp_VAHj9/preview" width="100%" height="400px" allowfullscreen allow="autoplay" ></iframe>
+        <h3 id="videoTitle" style="margin-top: 10px;">Pembukaan Latihan 07</h3>
+      </div>
+      <div class="video-list" >
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1KzbD2hoIt5fTOcHFpUzA_n6CPkRO99y7/preview', '43A Patty dan neneknya pergi ke kedai teh')">
+  <img src="thumbnail07.jpg" alt="43A Patty dan neneknya pergi ke kedai teh">
+  <div class="info">43A Patty dan neneknya pergi ke kedai teh</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1ZGXxZpWNTjC3yZygwDniHQyeOCMz5xcK/preview', '43B Pilihan teh yang tepat untuk Patty')">
+  <img src="thumbnail07.jpg" alt="43B Pilihan teh yang tepat untuk Patty">
+  <div class="info">43B Pilihan teh yang tepat untuk Patty</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1VdJbgpLU7PU1wDIH20Sr-iXcECsQoh-o/preview', '43C Patty membicarakan menu di kedai teh')">
+  <img src="thumbnail07.jpg" alt="43C Patty membicarakan menu di kedai teh">
+  <div class="info">43C Patty membicarakan menu di kedai teh</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/14iIrj89a75KIr_LpMB6UTj1CoiVIMkbt/preview', '43D Patty terkesan dengan pesanannya')">
+  <img src="thumbnail07.jpg" alt="43D Patty terkesan dengan pesanannya">
+  <div class="info">43D Patty terkesan dengan pesanannya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/17OkGFzN1PhaWKkk_-GmIlxcercC1iWih/preview', '43E Patty menulis diary tentang kedai teh')">
+  <img src="thumbnail07.jpg" alt="43E Patty menulis diary tentang kedai teh">
+  <div class="info">43E Patty menulis diary tentang kedai teh</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Y1bMS_dJ9WsfFyd6DUa0BG6TzLySAFf7/preview', '44A Patty dan keluarganya ke tempat karaoke')">
+  <img src="thumbnail07.jpg" alt="44A Patty dan keluarganya ke tempat karaoke">
+  <div class="info">44A Patty dan keluarganya ke tempat karaoke</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1UYkf1qbfXnS3dLBMGK-2KHnmMpWtskt4/preview', '44B Patty dan keluarganya bernyanyi bersama')">
+  <img src="thumbnail07.jpg" alt="44B Patty dan keluarganya bernyanyi bersama">
+  <div class="info">44B Patty dan keluarganya bernyanyi bersama</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1UfW274sXiqaxnNkjKz7mjf-eADVlj5Ii/preview', '44C Misteri uang di amplop merah')">
+  <img src="thumbnail07.jpg" alt="44C Misteri uang di amplop merah">
+  <div class="info">44C Misteri uang di amplop merah</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1zUKcJhkKVIo5anlzfqBiqAi8BBXlsf0u/preview', '45A Patty pergi ke ngarai Taroko')">
+  <img src="thumbnail07.jpg" alt="45A Patty pergi ke ngarai Taroko">
+  <div class="info">45A Patty pergi ke ngarai Taroko</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1OyUSPTjxa7Vp5s_sGWAj_LXisOX7i5y4/preview', '45B Patty menulis tentang ngarai Taroko')">
+  <img src="thumbnail07.jpg" alt="45B Patty menulis tentang ngarai Taroko">
+  <div class="info">45B Patty menulis tentang ngarai Taroko</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1HjBTIUwHtg2JlWHQ4y9DdpRmg-tEPEWf/preview', '45C Hari kedua Patty di ngarai Taroko')">
+  <img src="thumbnail07.jpg" alt="45C Hari kedua Patty di ngarai Taroko">
+  <div class="info">45C Hari kedua Patty di ngarai Taroko</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1KttaXo2dNvqNluhyd0-RszxX04GLqJAz/preview', '45D Patty dkk mendaki menuju air terjun')">
+  <img src="thumbnail07.jpg" alt="45D Patty dkk mendaki menuju air terjun">
+  <div class="info">45D Patty dkk mendaki menuju air terjun</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1pWe1GDESXcyG5TCT6O3imsMkWBibh51N/preview', '45E Patty melihat banyak pemandangan indah')">
+  <img src="thumbnail07.jpg" alt="45E Patty melihat banyak pemandangan indah">
+  <div class="info">45E Patty melihat banyak pemandangan indah</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1-_O3Pip7eciTdQ4Udo-9UVbKcOZJ2aXh/preview', '45F Seseorang sedang meminta bantuan')">
+  <img src="thumbnail07.jpg" alt="45F Seseorang sedang meminta bantuan">
+  <div class="info">45F Seseorang sedang meminta bantuan</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1joXAVkW7dAIodCQMvPS7dd4OaS-zGcvd/preview', '46A Patty makan malam bersama keluarganya')">
+  <img src="thumbnail07.jpg" alt="46A Patty makan malam bersama keluarganya">
+  <div class="info">46A Patty makan malam bersama keluarganya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/17k96EcLCQVQHtoeOImOVORMITF6AVB9u/preview', '46B Patty menyukai hidangan makan malamnya')">
+  <img src="thumbnail07.jpg" alt="46B Patty menyukai hidangan makan malamnya">
+  <div class="info">46B Patty menyukai hidangan makan malamnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1D955Kpj-h1Rji3j8EH4SlAtEeraaBRhU/preview', '46C Hidangan penutup untuk Patty')">
+  <img src="thumbnail07.jpg" alt="46C Hidangan penutup untuk Patty">
+  <div class="info">46C Hidangan penutup untuk Patty</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1vHy-ZbXDxJiXOxLGRHwi68fWtojNPeQw/preview', '46D Patty menyelesaikan masalah Paul dan Brian')">
+  <img src="thumbnail07.jpg" alt="46D Patty menyelesaikan masalah Paul dan Brian">
+  <div class="info">46D Patty menyelesaikan masalah Paul dan Brian</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1qsBVNYjfcs-5oSyA8oOxCUi9IQFk0tFs/preview', '46E Patty menulis jurnal hariannya')">
+  <img src="thumbnail07.jpg" alt="46E Patty menulis jurnal hariannya">
+  <div class="info">46E Patty menulis jurnal hariannya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1BU1nSYSj0ewZEAOFqAT7i3L82J5ac-g4/preview', '48A Patty akan kembali ke ngarai Taroko')">
+  <img src="thumbnail07.jpg" alt="48A Patty akan kembali ke ngarai Taroko">
+  <div class="info">48A Patty akan kembali ke ngarai Taroko</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Ffv6MTGpLLIQQJqbOmMZ2KFGS1OS4EFH/preview', '48B Patty telah sampai di ngarai Taroko')">
+  <img src="thumbnail07.jpg" alt="48B Patty telah sampai di ngarai Taroko">
+  <div class="info">48B Patty telah sampai di ngarai Taroko</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1V7_lYzWF57jmTYFjfHItrf0B8323cL21/preview', '48C Patty belajar tentang suku Taroko')">
+  <img src="thumbnail07.jpg" alt="48C Patty belajar tentang suku Taroko">
+  <div class="info">48C Patty belajar tentang suku Taroko</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1YUQabJlt9S24h0AUJzLzDDYLRaEe6ntW/preview', '48D Patty berjalan jalan di hutan bambu')">
+  <img src="thumbnail07.jpg" alt="48D Patty berjalan jalan di hutan bambu">
+  <div class="info">48D Patty berjalan jalan di hutan bambu</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1xODDWtQYMEjE71fxHgWhYcpktA7udYF8/preview', '48E Patty menulis jurnal tentang Taroko')">
+  <img src="thumbnail07.jpg" alt="48E Patty menulis jurnal tentang Taroko">
+  <div class="info">48E Patty menulis jurnal tentang Taroko</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1gw81t_PndWl2e5Bt3eyLAo1qYzHfksTt/preview', '49A Patty sedang merindukan rumahnya')">
+  <img src="thumbnail07.jpg" alt="49A Patty sedang merindukan rumahnya">
+  <div class="info">49A Patty sedang merindukan rumahnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1E6ED2IcdCkftwncgOogWJr-gp2rssI0V/preview', '49B Patty pergi ke rumah Daisy di Taipei')">
+  <img src="thumbnail07.jpg" alt="49B Patty pergi ke rumah Daisy di Taipei">
+  <div class="info">49B Patty pergi ke rumah Daisy di Taipei</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1EgJ5OIsIfebPVmLM7unaSmqS8U0FXpwP/preview', '49C Patty akan makan makanan Amerika')">
+  <img src="thumbnail07.jpg" alt="49C Patty akan makan makanan Amerika">
+  <div class="info">49C Patty akan makan makanan Amerika</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1LTtC0sqeLdwPkJh80xgXLvvcSbjH9l5Y/preview', '49D Patty pergi ke mal setelah makan')">
+  <img src="thumbnail07.jpg" alt="49D Patty pergi ke mal setelah makan">
+  <div class="info">49D Patty pergi ke mal setelah makan</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1rDE16lIcy2RU7IPCOa9iV05ucmTSOdRu/preview', '49E Kejadian aneh setelah naik wahana')">
+  <img src="thumbnail07.jpg" alt="49E Kejadian aneh setelah naik wahana">
+  <div class="info">49E Kejadian aneh setelah naik wahana</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1dU8ihRWZl96DfcRM6hPRIoPkerTEQj45/preview', '49F Patty menulis jurnal tentang Taipei')">
+  <img src="thumbnail07.jpg" alt="49F Patty menulis jurnal tentang Taipei">
+  <div class="info">49F Patty menulis jurnal tentang Taipei</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1902RxcQFXSN5vSVXGp-vHfHdqBzW5yqN/preview', '50A Mandy dan Ali akan pergi ke mall')">
+  <img src="thumbnail07.jpg" alt="50A Mandy dan Ali akan pergi ke mall">
+  <div class="info">50A Mandy dan Ali akan pergi ke mall</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1vRZYNoK4QxsI-7iKS_OBiDV7IcPOA3NY/preview', '50B Mandy dan Ali sudah sampai di mall')">
+  <img src="thumbnail07.jpg" alt="50B Mandy dan Ali sudah sampai di mall">
+  <div class="info">50B Mandy dan Ali sudah sampai di mall</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1mUYdezzVTVYmMM2fO_CzIte9yWYWlL9z/preview', '50C Ali dan Mandy bercerita tentang pria')">
+  <img src="thumbnail07.jpg" alt="50C Ali dan Mandy bercerita tentang pria">
+  <div class="info">50C Ali dan Mandy bercerita tentang pria</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1sNv40DWzn9Wm_Z_ebNtRQHslIFJ4XUme/preview', '50D Ali dan Mandy bertemu Jake di mall')">
+  <img src="thumbnail07.jpg" alt="50D Ali dan Mandy bertemu Jake di mall">
+  <div class="info">50D Ali dan Mandy bertemu Jake di mall</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/11stdfBQyHWC9UqWVmv5Y5vnTiQUD9Cjf/preview', '50E Olahraga yang tepat untuk Ali')">
+  <img src="thumbnail07.jpg" alt="50E Olahraga yang tepat untuk Ali">
+  <div class="info">50E Olahraga yang tepat untuk Ali</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/184NZnpNQvda3dIEJLv3Oqq0D47XD-nJL/preview', '50F Jake ikut bersama Ali dan Mandy')">
+  <img src="thumbnail07.jpg" alt="50F Jake ikut bersama Ali dan Mandy">
+  <div class="info">50F Jake ikut bersama Ali dan Mandy</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1l2iApjJXOk9cSNAn-wWptoFYeTqVXKn-/preview', '51A Jake bersiap pergi ke konser')">
+  <img src="thumbnail07.jpg" alt="51A Jake bersiap pergi ke konser">
+  <div class="info">51A Jake bersiap pergi ke konser</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/10qepnWBiFOPCjaGtsESJ5ZBvAayZtXJl/preview', '51B Ali juga bersiap pergi ke konser')">
+  <img src="thumbnail07.jpg" alt="51B Ali juga bersiap pergi ke konser">
+  <div class="info">51B Ali juga bersiap pergi ke konser</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1mtOIrSfHIsMOmy7xSTTJyk9Hjt2vsGkc/preview', '51C Jake dan Ali bermasalah di jalan')">
+  <img src="thumbnail07.jpg" alt="51C Jake dan Ali bermasalah di jalan">
+  <div class="info">51C Jake dan Ali bermasalah di jalan</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Z0uRRUiRVmpf5qvEvOFwwB3kvAV3EeK4/preview', '52A Jake dan Ali menyiapkan hadiah natal')">
+  <img src="thumbnail07.jpg" alt="52A Jake dan Ali menyiapkan hadiah natal">
+  <div class="info">52A Jake dan Ali menyiapkan hadiah natal</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1MC1RQhYakqi-VJwuXHZIyQEXiZTKZLKB/preview', '52B Matt mengunjungi rumah Jake')">
+  <img src="thumbnail07.jpg" alt="52B Matt mengunjungi rumah Jake">
+  <div class="info">52B Matt mengunjungi rumah Jake</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1d5FwyTrCESwehHznMIGs1AVpE_GJhFX1/preview', '52C Jake dan Ali akan bertemu setelah natal')">
+  <img src="thumbnail07.jpg" alt="52C Jake dan Ali akan bertemu setelah natal">
+  <div class="info">52C Jake dan Ali akan bertemu setelah natal</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Esi2ElM0m9L9fIET8hFpNn7QXW_btLq4/preview', '52D Jake dan Ali bertukar hadiah')">
+  <img src="thumbnail07.jpg" alt="52D Jake dan Ali bertukar hadiah">
+  <div class="info">52D Jake dan Ali bertukar hadiah</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/122unxqy6_HTaecw78Li4HGppOetSRB2Z/preview', '52E Ali merasa sangat bahagia')">
+  <img src="thumbnail07.jpg" alt="52E Ali merasa sangat bahagia">
+  <div class="info">52E Ali merasa sangat bahagia</div>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar(forceClose = null) {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      if (forceClose === false) {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      } else {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+      }
+    }
+
+    function playVideo(url, title) {
+      document.getElementById("mainVideo").src = url;
+      document.getElementById("videoTitle").textContent = title;
+      toggleSidebar(false);
+    }
+  </script>
+
+</body>
+</html>
