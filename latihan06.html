@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Latihan 06 ATS-English</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      position: fixed;
+      top: 0;
+      left: -280px;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h2 {
+      color: #fff;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #ccc;
+      padding: 10px 0;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 999;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1100;
+      background: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      padding: 60px 1rem 1rem 1rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .video-main {
+      flex: 1;
+      min-width: 400px;
+      position: sticky;
+      top: 0px;
+      z-index: 10;
+      background-color: white;
+    }
+    
+    .video-main iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .video-list {
+      flex: none;
+      width: 320px;
+      max-height: 90vh;
+      overflow-y: auto;
+      /*min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-height: 100%;
+      */
+    }
+
+    .video-item {
+      display: flex;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-item img {
+      width: 120px;
+      height: 70px;
+      object-fit: cover;
+    }
+
+    .video-item .info {
+      padding: 0.5em;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .video-main iframe {
+        height: 200px;
+      }
+
+      .video-list {
+        width: 100%;
+        max-height: none;
+        overflow-y: visible;
+      }
+
+      .video-item {
+        flex-direction: row;
+        width: 95%;
+        margin: 0 auto;
+      }
+
+      .video-item img {
+        width: 100px;
+        height: 60px;
+      }
+
+      .video-item .info {
+        font-size: 18px;
+        padding: 0.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+
+  <div class="sidebar" id="sidebar">
+    <br><h2>Menu ATS-ENGLISH</h2>
+    <a href="https://boymohlis.github.io/engoffline/index.html">EngBreaking</a>
+    <a href="index.html">Latihan 1 video 45</a>
+    <a href="latihan02.html">Latihan 2 video 70</a>
+    <a href="latihan03.html">Latihan 3 video 50</a>
+    <a href="latihan04.html">Latihan 4 video 54</a>
+    <a href="latihan05.html">Latihan 5 video 51</a>
+    <a href="latihan06.html">Latihan 6 video 52</a>
+    <a href="latihan07.html">Latihan 7 video 44</a>
+    <a href="about.html">Tentang</a>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <div class="wrapper" id="wrapper">
+    <div class="container">
+      <div class="video-main">
+        <iframe id="mainVideo" src="https://drive.google.com/file/d/1_jI3uRfskpS5LmYFdH3nmRnlQp_VAHj9/preview" width="100%" height="400px" allowfullscreen allow="autoplay" ></iframe>
+        <h3 id="videoTitle" style="margin-top: 10px;">Pembukaan Latihan 06</h3>
+      </div>
+      <div class="video-list" >
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1hpFSAc1ts6zNsYmhStGqwVJYvQl6lZHY/preview', '30A Sara sedang sedih, Ben malah menyebalkan')">
+  <img src="thumbnail06.jpg" alt="30A Sara sedang sedih, Ben malah menyebalkan">
+  <div class="info">30A Sara sedang sedih, Ben malah menyebalkan</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1ZpmTtcx5a4R0sVNNaybgVn7HIds1m6qP/preview', '30B Renee sedang mengalami hari yang buruk')">
+  <img src="thumbnail06.jpg" alt="30B Renee sedang mengalami hari yang buruk">
+  <div class="info">30B Renee sedang mengalami hari yang buruk</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1JnlErbWzNy42fqNpoFO8pkFOz3qwGKmC/preview', '30C Renee menumpahkan makanan ke pelanggannya')">
+  <img src="thumbnail06.jpg" alt="30C Renee menumpahkan makanan ke pelanggannya">
+  <div class="info">30C Renee menumpahkan makanan ke pelanggannya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/13xuFxFSk0yXQaYvvp8GNXWAyb693b6v7/preview', '30D Sara meminta pendapat tentang artikelnya')">
+  <img src="thumbnail06.jpg" alt="30D Sara meminta pendapat tentang artikelnya">
+  <div class="info">30D Sara meminta pendapat tentang artikelnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1ItNUJM3pKdEzmfC1rwJsXCYpcGLAS3bT/preview', '31A Ben sedang berjemur dibawah matahari')">
+  <img src="thumbnail06.jpg" alt="31A Ben sedang berjemur dibawah matahari">
+  <div class="info">31A Ben sedang berjemur dibawah matahari</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1H5t9Ax8OTPAngbZ7EyAjp7PaCazAcIpN/preview', '31B Sara mengalami masalah dengan kulitnya')">
+  <img src="thumbnail06.jpg" alt="31B Sara mengalami masalah dengan kulitnya">
+  <div class="info">31B Sara mengalami masalah dengan kulitnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Kc1qBWDMn1x6QoHNKoIGpSO7M2rTJ4qF/preview', '31C Simon datang dan Sara kembali sedih')">
+  <img src="thumbnail06.jpg" alt="31C Simon datang dan Sara kembali sedih">
+  <div class="info">31C Simon datang dan Sara kembali sedih</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1nQyp1lHXLFRdfFtPJsQz9KhpUBAOt-ax/preview', '31D Hugh menawarkan obat kulit ke Betty')">
+  <img src="thumbnail06.jpg" alt="31D Hugh menawarkan obat kulit ke Betty">
+  <div class="info">31D Hugh menawarkan obat kulit ke Betty</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1YJavOKbZNJkvFzCJe5kpsNbrvye0My6s/preview', '32A Simon dan pertandingan baseballnya')">
+  <img src="thumbnail06.jpg" alt="32A Simon dan pertandingan baseballnya">
+  <div class="info">32A Simon dan pertandingan baseballnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1DeGraHq34fMJrHpkhVx9QpXhcEWdS5HS/preview', '32B Simon memenangkan tiket gratis')">
+  <img src="thumbnail06.jpg" alt="32B Simon memenangkan tiket gratis">
+  <div class="info">32B Simon memenangkan tiket gratis</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1CFKzEN2HuF0empp5mXbYqK-oBsoAXcmy/preview', '32C Pertandingan untuk tiket gratis Simon')">
+  <img src="thumbnail06.jpg" alt="32C Pertandingan untuk tiket gratis Simon">
+  <div class="info">32C Pertandingan untuk tiket gratis Simon</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1jNmsop3d-a7x5rQC8RH5yoPecKgoxng9/preview', '32D Simon dkk selesai menonton pertandingan')">
+  <img src="thumbnail06.jpg" alt="32D Simon dkk selesai menonton pertandingan">
+  <div class="info">32D Simon dkk selesai menonton pertandingan</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1h_aDE5Zd7QgwyaPAImIWv5QAPB_f3xdK/preview', '33A Max dan Sara menonton TV bersama')">
+  <img src="thumbnail06.jpg" alt="33A Max dan Sara menonton TV bersama">
+  <div class="info">33A Max dan Sara menonton TV bersama</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/16W2iC0cBAmF3hqHbBRRBuPpR7xK8E0yM/preview', '33B Renee membantu Sara menulis artikelnya')">
+  <img src="thumbnail06.jpg" alt="33B Renee membantu Sara menulis artikelnya">
+  <div class="info">33B Renee membantu Sara menulis artikelnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1MC5zLwW_P8R0haTZOPDWQ19rWA9ivnD4/preview', '33C Sara menulis tentang transportasi umum')">
+  <img src="thumbnail06.jpg" alt="33C Sara menulis tentang transportasi umum">
+  <div class="info">33C Sara menulis tentang transportasi umum</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1OkMrppXZKUZHCi_KpXa_ygnjtJojqJiI/preview', '33D Betty sedang berakting naik taksi')">
+  <img src="thumbnail06.jpg" alt="33D Betty sedang berakting naik taksi">
+  <div class="info">33D Betty sedang berakting naik taksi</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1uW6nyRas1Fwblq2DPAQ5YHERkdAmXfsR/preview', '34A Sara sedang berjualan air lemon')">
+  <img src="thumbnail06.jpg" alt="34A Sara sedang berjualan air lemon">
+  <div class="info">34A Sara sedang berjualan air lemon</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1m_YKOtFLX7cu6MoFxLyGalTL1VSlEvIP/preview', '34B Renee kembali membeli Minuman Sara')">
+  <img src="thumbnail06.jpg" alt="34B Renee kembali membeli Minuman Sara">
+  <div class="info">34B Renee kembali membeli Minuman Sara</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Hw8o67QHOhoIePMDPXJF6zCN7W7Z92N3/preview', '34C Hugh menawarkan sebuah buku kepada Sara')">
+  <img src="thumbnail06.jpg" alt="34C Hugh menawarkan sebuah buku kepada Sara">
+  <div class="info">34C Hugh menawarkan sebuah buku kepada Sara</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1ivc1s9LqZdn5C6wDnpD4FdIdRFtHc4fF/preview', '34D Sara belajar berbelanja di internet')">
+  <img src="thumbnail06.jpg" alt="34D Sara belajar berbelanja di internet">
+  <div class="info">34D Sara belajar berbelanja di internet</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1hBYuTuOnVIxvWDnP4Ix5FU-F7tvGPuJc/preview', '35A Sara akan pergi berkemah')">
+  <img src="thumbnail06.jpg" alt="35A Sara akan pergi berkemah">
+  <div class="info">35A Sara akan pergi berkemah</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1tQzw5teHpLFlipH9GdU8axgCwq_cIYCa/preview', '35B Simon baru pulang dari kemah')">
+  <img src="thumbnail06.jpg" alt="35B Simon baru pulang dari kemah">
+  <div class="info">35B Simon baru pulang dari kemah</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1cBshK7-yvvIrdkiF2NYLqALA4XQUbH4X/preview', '35C Hugh berbasa basi dengan Max')">
+  <img src="thumbnail06.jpg" alt="35C Hugh berbasa basi dengan Max">
+  <div class="info">35C Hugh berbasa basi dengan Max</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1_ke9-ftl4hOXQi6MXEP6p4xNbxFanZRa/preview', '36A Sara sedang berlatih pidato')">
+  <img src="thumbnail06.jpg" alt="36A Sara sedang berlatih pidato">
+  <div class="info">36A Sara sedang berlatih pidato</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1tnm5vAkRQSLVVz7S6K2ct8QCMxYG4e8S/preview', '36B Sara berlatih pidato di The Diner')">
+  <img src="thumbnail06.jpg" alt="36B Sara berlatih pidato di The Diner">
+  <div class="info">36B Sara berlatih pidato di The Diner</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1TBUt740dYomJ6tgriKLfT8n2FKd1yBBH/preview', '36C The diner kedatangan tamu spesial')">
+  <img src="thumbnail06.jpg" alt="36C The diner kedatangan tamu spesial">
+  <div class="info">36C The diner kedatangan tamu spesial</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1GA9VUfV1gh8hKTtbxLcVBx7qdbMGfUqf/preview', '36D Sara menyelesaikan kontes pidatonya')">
+  <img src="thumbnail06.jpg" alt="36D Sara menyelesaikan kontes pidatonya">
+  <div class="info">36D Sara menyelesaikan kontes pidatonya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1orbQQ90d1aBQGtV-JvecRK8zRY57W9cX/preview', '37A Sara mendapatkan surat dari orang tuanya')">
+  <img src="thumbnail06.jpg" alt="37A Sara mendapatkan surat dari orang tuanya">
+  <div class="info">37A Sara mendapatkan surat dari orang tuanya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/11kkBFhQqRe4z-aD5_zMGp0TLLB-8LCu-/preview', '37B Simon sedang menonton TV di The Diner')">
+  <img src="thumbnail06.jpg" alt="37B Simon sedang menonton TV di The Diner">
+  <div class="info">37B Simon sedang menonton TV di The Diner</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1KzLkMofchmGk3XVoFXsSOFN16RSXfvJG/preview', '37C Menonton olimpiade bersama di The Diner')">
+  <img src="thumbnail06.jpg" alt="37C Menonton olimpiade bersama di The Diner">
+  <div class="info">37C Menonton olimpiade bersama di The Diner</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1inDHLAW_bm7T_aVxqoM9xparIm6nQ34u/preview', '37D Betty sedang sedih di tempat kerja')">
+  <img src="thumbnail06.jpg" alt="37D Betty sedang sedih di tempat kerja">
+  <div class="info">37D Betty sedang sedih di tempat kerja</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1nhE2f0bfqJD7-AtYuOEGoGk8y_Z9QI9L/preview', '38A Ben mempunyai sebuah motor baru')">
+  <img src="thumbnail06.jpg" alt="38A Ben mempunyai sebuah motor baru">
+  <div class="info">38A Ben mempunyai sebuah motor baru</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1_B6RgTDPOHCn3QmxdAPqWe83Fo8PylOc/preview', '38B Sara dan Ben belajar rambu lalu lintas')">
+  <img src="thumbnail06.jpg" alt="38B Sara dan Ben belajar rambu lalu lintas">
+  <div class="info">38B Sara dan Ben belajar rambu lalu lintas</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1URZ8_x8xf_Ot3Ql9Kz3UuLAJTKDsAa2M/preview', '38C Max ikut Ben dan Sara belajar')">
+  <img src="thumbnail06.jpg" alt="38C Max ikut Ben dan Sara belajar">
+  <div class="info">38C Max ikut Ben dan Sara belajar</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1nDi6JhrJcErHHyQek_j-vhEnhqgEsXIA/preview', '38D Max sedang gugup tentang tes Sara')">
+  <img src="thumbnail06.jpg" alt="38D Max sedang gugup tentang tes Sara">
+  <div class="info">38D Max sedang gugup tentang tes Sara</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1ssDgfwrvuwt-aqHmVT_jd4Lct0lJNSsK/preview', '38E Sara sudah pulang dari tesnya')">
+  <img src="thumbnail06.jpg" alt="38E Sara sudah pulang dari tesnya">
+  <div class="info">38E Sara sudah pulang dari tesnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1MRwjP9WyG-uGIrmGUd6MsUb3_LcTwbug/preview', '39A Simon sedang mencari kartu di kantor pos')">
+  <img src="thumbnail06.jpg" alt="39A Simon sedang mencari kartu di kantor pos">
+  <div class="info">39A Simon sedang mencari kartu di kantor pos</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1C-aOHifQYYUl_Z6M4X3UwLngSkL-X-hO/preview', '39B Roger kembali datang ke kota kecil')">
+  <img src="thumbnail06.jpg" alt="39B Roger kembali datang ke kota kecil">
+  <div class="info">39B Roger kembali datang ke kota kecil</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1fIFs08NRFzinTEr5WJjt5aFkpnWF6tQB/preview', '39C Sara tidak jadi pergi ke Italia')">
+  <img src="thumbnail06.jpg" alt="39C Sara tidak jadi pergi ke Italia">
+  <div class="info">39C Sara tidak jadi pergi ke Italia</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1wY28LPRRogakGhQN5oNkaWw7Oa3W4lt9/preview', '39D Rich membantu Renee menulis surat')">
+  <img src="thumbnail06.jpg" alt="39D Rich membantu Renee menulis surat">
+  <div class="info">39D Rich membantu Renee menulis surat</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1HYfnZYoKxHI8jSt-JQ45k4lYg5woYchF/preview', '40A Renee sedang memimpikan rumah impiannya')">
+  <img src="thumbnail06.jpg" alt="40A Renee sedang memimpikan rumah impiannya">
+  <div class="info">40A Renee sedang memimpikan rumah impiannya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1Fhcq_SHLXfFLZQPztvjWMuOFjaCrzOsI/preview', '40B Hugh sedang mencari apartemen')">
+  <img src="thumbnail06.jpg" alt="40B Hugh sedang mencari apartemen">
+  <div class="info">40B Hugh sedang mencari apartemen</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1tX61eQIq6L9aOAjQBeVhWEfTKh28IAzt/preview', '40C Renee dan Max sedang membantu Hugh')">
+  <img src="thumbnail06.jpg" alt="40C Renee dan Max sedang membantu Hugh">
+  <div class="info">40C Renee dan Max sedang membantu Hugh</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1M3ycBlUmJIDgS77i49ivrI8z06rIEsKX/preview', '40D Betty sedang mengiklankan rumahnya')">
+  <img src="thumbnail06.jpg" alt="40D Betty sedang mengiklankan rumahnya">
+  <div class="info">40D Betty sedang mengiklankan rumahnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1YXUJt-QOXk_tXDp7LTozPj3WmsIwj2_H/preview', '41A Sara sedang merindukan orangtuanya')">
+  <img src="thumbnail06.jpg" alt="41A Sara sedang merindukan orangtuanya">
+  <div class="info">41A Sara sedang merindukan orangtuanya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1ID8MxrB8RQmIPf5Pa3fhrnKT6wEN3JeZ/preview', '41B Simon akan pergi ke acara makan malam')">
+  <img src="thumbnail06.jpg" alt="41B Simon akan pergi ke acara makan malam">
+  <div class="info">41B Simon akan pergi ke acara makan malam</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1_72DD_jzOTG7ayjtW1sph07kQBKcBa6p/preview', '41C Renee menceritakan acara makan malamnya')">
+  <img src="thumbnail06.jpg" alt="41C Renee menceritakan acara makan malamnya">
+  <div class="info">41C Renee menceritakan acara makan malamnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1xpVPl6GMACriooWJB8r1HdMdD1Pidykh/preview', '41D Simon kedatangan kakak kandungnya')">
+  <img src="thumbnail06.jpg" alt="41D Simon kedatangan kakak kandungnya">
+  <div class="info">41D Simon kedatangan kakak kandungnya</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1ODGzaN3S5MBAW6Aww6FKANQLlrmfsW_o/preview', '42A Ben memiliki hewan peliharaan baru')">
+  <img src="thumbnail06.jpg" alt="42A Ben memiliki hewan peliharaan baru">
+  <div class="info">42A Ben memiliki hewan peliharaan baru</div>
+</div>
+
+<div class="video-item" onclick="playVideo('https://drive.google.com/file/d/1XD14z6pRec5C6UBdRBWTGBtZRRHb458O/preview', '42B Betty bermain dengan anjingnya, Teddy')">
+  <img src="thumbnail06.jpg" alt="42B Betty bermain dengan anjingnya, Teddy">
+  <div class="info">42B Betty bermain dengan anjingnya, Teddy</div>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSidebar(forceClose = null) {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      if (forceClose === false) {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("active");
+      } else {
+        sidebar.classList.toggle("open");
+        overlay.classList.toggle("active");
+      }
+    }
+
+    function playVideo(url, title) {
+      document.getElementById("mainVideo").src = url;
+      document.getElementById("videoTitle").textContent = title;
+      toggleSidebar(false);
+    }
+  </script>
+
+</body>
+</html>
