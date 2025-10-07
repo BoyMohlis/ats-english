@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ATS English</title>
   <style>
+    #my-header {
+        position: fixed; /* Mengatur posisi header menjadi tetap */
+        top: 0;          /* Menempatkan header di bagian paling atas */
+        left: 0;         /* Menempatkan header di sisi kiri */
+        width: 100%;     /* Membuat header membentang 100% lebar halaman */
+        z-index: 1000;   /* Memastikan header berada di atas konten lain */
+        background-color: #f9f9f9; /* Berikan warna latar belakang agar tidak transparan */
+        /* Properti tambahan lainnya untuk tampilan header */
+      position: sticky;
+    }
     body {
       margin: 0;
       font-family: sans-serif;
@@ -170,7 +180,12 @@
   </style>
 </head>
 <body>
-
+        <header id="my-header">
+            <!-- Konten header di sini -->
+          <center>
+            <h1>Silahkan Pergunakan Media Belajar ini dengan bijak</h1>
+          </center>
+        </header>
   <div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
   <div class="sidebar" id="sidebar">
@@ -406,4 +421,5 @@
 
 </body>
 </html>
+
 
