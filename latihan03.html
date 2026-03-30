@@ -13,6 +13,54 @@
       overflow-x: hidden;
     }
 
+        /* === HEADER === */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #000000, #3bcaf6);
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 25px;
+      padding: 5px 10px;
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      padding: 6px 10px;
+      width: 200px;
+      border-radius: 25px;
+    }
+
+    .search-box button {
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    /* akhir */
+
     .wrapper {
       display: flex;
       transition: transform 0.3s ease;
@@ -170,7 +218,15 @@
   </style>
 </head>
 <body>
-
+  <header>
+    <h1 style="padding-left: 90px;">🎬 Madura Creator</h1>
+    <!--
+    <div class="search-box">
+      <input type="text" id="search" placeholder="Search video...">
+      <button onclick="searchVideos()">🔍</button>
+    </div>
+    -->
+  </header>
   <div class="menu-btn" onclick="toggleSidebar()">☰</div>
 
   <div class="sidebar" id="sidebar">
